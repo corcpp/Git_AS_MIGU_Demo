@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wang.cmcc.as_migu_demo"
+    android:versionCode="1"
+    android:versionName="2.1.0">
+
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:allowBackup="true"
+        android:name=".ExampleApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MiguUITestActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--<activity android:name="com.cmcc.migusso.sdk.ui.LoginActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden"></activity>-->
+
+        <!--<activity android:name="com.cmcc.migusso.sdk.ui.SmsLoginActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden"></activity>-->
+
+        <!--<activity android:name="com.cmcc.migusso.sdk.ui.RegisterActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden"></activity>-->
+
+        <!--<activity android:name="com.cmcc.migusso.sdk.ui.FindPasswordActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden"></activity>-->
+
+        <!--<activity android:name="com.cmcc.migusso.sdk.ui.UserProtocolActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden"></activity>-->
+
+        <!--<activity android:name="com.cmcc.migusso.sdk.ui.UpgradeUserActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden"></activity>-->
+
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.SmsLoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.RegisterActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.FindPasswordActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.UserProtocolActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.UpgradeUserActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+
+        <!-- 下面是 2.1 期新加内容-->
+        <activity android:name="com.cmcc.migusso.sdk.activity.UserManageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.ChangeNickNameActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.BindPhoneNumActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.ChangePasswordActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.SetPasswordActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.VerifyOldPhoneActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.cmcc.migusso.sdk.activity.BindNewPhoneActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"></activity>
+
+
+
+        <!--集成开始 -->
+
+        <service
+            android:name="com.cmcc.migusso.service.SsoService"
+            android:exported="true"
+            android:process="com.cmcc.migusso.service.SsoService" >
+            <intent-filter>
+                <action android:name="com.cmcc.migusso.Action.SsoService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="service_version"
+                android:value="2.1.0-jar.arm" />
+        </service>
+
+        <receiver android:name="com.cmcc.migusso.receiver.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
