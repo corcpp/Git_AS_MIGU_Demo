@@ -28,6 +28,7 @@ Thumbs.db
 # Android Studio
 *.iml
 .idea/
+/captures
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
 .gradle/
 build/
@@ -44,3 +45,4 @@ obj/
 #/.idea/libraries
 #.DS_Store
 #/build
+

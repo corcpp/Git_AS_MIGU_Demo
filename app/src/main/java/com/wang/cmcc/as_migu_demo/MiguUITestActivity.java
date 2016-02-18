@@ -17,9 +17,12 @@ import com.cmcc.migusso.sdk.auth.AuthnConstants;
 import com.cmcc.migusso.sdk.auth.AuthnHelper;
 import com.cmcc.migusso.sdk.auth.TokenListener;
 import com.cmcc.migusso.sdk.common.BoolCallBack;
+import com.cmcc.migusso.sdk.common.ICallBack;
+import com.cmcc.migusso.sdk.common.MiguUI;
 import com.cmcc.migusso.sdk.common.MiguUIConstants;
 import com.cmcc.migusso.sdk.common.ThirdEventListener;
 import com.cmcc.migusso.sdk.common.TokenProcess;
+import com.cmcc.migusso.sdk.util.LogUtil;
 import com.cmcc.migusso.sdk.util.SsoSdkConstants;
 
 import org.apache.http.Header;
@@ -68,6 +71,14 @@ public class MiguUITestActivity extends Activity implements View.OnClickListener
 
         setMiguUIParams();
 
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        mAuthnHelper.unRegisterCallBacks();
+
+        super.onDestroy();
     }
 
     private void initViews() {
@@ -233,6 +244,26 @@ public class MiguUITestActivity extends Activity implements View.OnClickListener
          */
         mAuthnHelper.setLogo(R.drawable.ic_launcher);
         mAuthnHelper.setThemeColor(R.color.purple);
+
+        mAuthnHelper.setVisitorCallBack(new ICallBack() {
+            @Override
+            public void callback() {
+                LogUtil.info("in visitor callback..");
+                //如果需要关闭登录页，请调用finishTopMiguActivity方法
+                mAuthnHelper.finishTopMiguActivity();
+                //add your code here
+            }
+        });
+
+        mAuthnHelper.setPwdSafeCallBack(new ICallBack() {
+            @Override
+            public void callback() {
+                LogUtil.info("in pwdSafe callback..");
+                //如果需要关闭找密码页面，请调用finishTopMiguActivity方法
+                mAuthnHelper.finishTopMiguActivity();
+                //add your code here
+            }
+        });
 
     }
 

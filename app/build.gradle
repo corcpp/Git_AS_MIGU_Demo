@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'cmccsso'
             keyPassword '111111'
-            storeFile file('C:/Work/AS_WorkSpace/AS_MIGU_DEMO/key/key')
+            storeFile file('D:/AS/WorkSpace/Git_AS_MIGU_Demo/key/key')
             storePassword '111111'
         }
     }
